@@ -6,17 +6,17 @@ import App from "./App";
 afterEach(rtl.cleanup);
 
 test('renders without crashing', () => {
-  render(<App />)
+  rtl.render(<App />)
 });
 
 test('displays the title', () => {
-  const{ getByText } = render(<App />);
-  getByText(/Players/i)
+  const{ getByText } = rtl.render(<App />);
+  getByText("Players")
 });
 
 const players = document.h3
 
 test('each players name is displayed', () => {
-  const{ getByLabelText } = render(<App />);
-  getByLabelText(players)
+  setTimeout(() => {const{ getByLabelText } = rtl.render(<App />);
+  getByLabelText(players)}, 8000)
 });

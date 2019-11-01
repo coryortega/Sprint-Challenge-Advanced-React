@@ -8,7 +8,7 @@ const CustomForm = () => {
 
     return (
         <div className="container">
-            <div className="home">
+            <div>
               <div> Miss: {miss}</div>
               <div> Fouls: {foul}</div>
               <div> Hits: {hit}</div>

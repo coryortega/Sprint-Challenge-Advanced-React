@@ -4,16 +4,16 @@ import CustomForm from './useForm'
 
 class FetchData extends React.Component {
   state = {
-    followers: []
+    players: []
   }
 
   componentDidMount() {
     axios
       .get('http://localhost:5000/api/players')
       .then(res => {
-        console.log(res)
+        // console.log(res)
         this.setState({
-          followers: res.data
+          players: res.data
         })
       })
       .catch(err => console.log(err));
@@ -21,13 +21,13 @@ class FetchData extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
 
-    if (prevState.followers.length !== this.state.followers.length) {
-      console.log(prevState, this.state)
+    if (prevState.players.length !== this.state.players.length) {
+    //   console.log(prevState, this.state)
       axios
       .get('http://localhost:5000/api/players')
       .then(res => {
         this.setState({
-          followers: res.data
+          players: res.data
         })
       })
       .catch(err => console.log(err));
@@ -43,12 +43,11 @@ class FetchData extends React.Component {
       <div className="App">
 
         <div className ="container">
-        {this.state.followers.length === 0 && <p>Loading Players...</p>}
-        <div className="followers">
-          {this.state.followers.map(follower => (
-            <div className = "follower">
-            <img className = "pic" width="200" src={follower.avatar_url}/>
-            <h3>{follower.name}</h3>
+        {this.state.players.length === 0 && <p>Loading Players...</p>}
+        <div className="players">
+          {this.state.players.map(player => (
+            <div className = "player">
+            <h3>{player.name}</h3>
             <CustomForm />
             </div>
           ))}
